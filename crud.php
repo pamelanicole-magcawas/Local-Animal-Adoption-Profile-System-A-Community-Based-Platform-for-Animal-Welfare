@@ -30,7 +30,6 @@ class Animal {
         return false;
     }
 
-    //get data from database and display
     public function read(){
         $query = "SELECT * FROM " .$this->tbl_name;
         $stmt = $this->conn->prepare($query);
