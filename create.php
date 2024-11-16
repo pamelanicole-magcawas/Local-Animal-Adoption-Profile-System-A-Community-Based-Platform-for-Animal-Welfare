@@ -14,7 +14,7 @@
         $animal->name = htmlspecialchars(trim($_POST['name']));
         $animal->age = htmlspecialchars(trim($_POST['age']));
         $animal->sex = htmlspecialchars(trim($_POST['sex']));
-        $animal->sex = htmlspecialchars(trim($_POST['treatments']));
+        $animal->treatments = htmlspecialchars(trim($_POST['treatments']));
     }
 
     if ($animal && $animal->create()) {
