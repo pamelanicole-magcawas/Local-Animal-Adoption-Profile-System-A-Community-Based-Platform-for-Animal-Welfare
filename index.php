@@ -12,11 +12,11 @@
             <li><a href="#" class="active">Home</a></li>
             <li><a href="donate.php">Our Animals</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="contact.php">Contact</a></li>
         </ul>
     </nav>
 
-    <div class="cards-cont">
+    <div class="star">
         <div class="card">
             <p>The current state of stray animals in the Philippines is a growing concern, particularly in urban areas where the…</p>
             <button class="adoptbutton" >ADOPT</button>
