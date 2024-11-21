@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Page</title>
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +19,6 @@
             min-height: 100vh;
         }
 
-        /* Header Section */
         .header {
             background-color: #f9f9f9;
             padding: 50px 30px;
@@ -45,8 +43,6 @@
             color: black;
         }
 
-
-        /* Main Content Section */
         .content {
             text-align: center;
             flex: 1;
@@ -65,7 +61,6 @@
             margin-bottom: 20px;
         }
 
-        /* Footer Section */
         footer {
             background-color: #333;
             color: white;
