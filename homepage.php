@@ -1,6 +1,8 @@
 <?php
 session_start();
 include("database.php");
+
+$user = $_SESSION['user'] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,16 +13,13 @@ include("database.php");
 </head>
 <body>
     <div style="text-align:center; padding:15%;">
-      <p  style="font-size:50px; font-weight:bold;">
-      <h1>Home</h1>
-    
-    <?php if (isset($user)): ?>
-        
-        <p>Hello <?= htmlspecialchars($user["FName" + "LName"]) ?></p>
-        
-        <p><a href="logout.php">Log out</a></p>
-                
-    <?php endif; ?>
+        <h1>Home</h1>
+        <?php if ($user): ?>
+            <p>Hello <?= htmlspecialchars($user["FName"] . " " . $user["LName"]) ?></p>
+            <p><a href="logout.php">Log out</a></p>
+        <?php else: ?>
+            <p><a href="index.php">Log in</a></p>
+        <?php endif; ?>
     </div>
 </body>
 </html>
