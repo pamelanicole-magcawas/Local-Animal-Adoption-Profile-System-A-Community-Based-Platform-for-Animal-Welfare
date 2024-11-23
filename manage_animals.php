@@ -17,7 +17,7 @@
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link rel="stylesheet" href="animals.css">
+    <link rel="stylesheet" href="style/animals.css">
 
     <script>
         $(document).ready(function() {
