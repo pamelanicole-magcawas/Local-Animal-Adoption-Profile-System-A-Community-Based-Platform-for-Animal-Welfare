@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <title>Animal Adoption</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Shelter</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-
-    <nav class="navbar">
+    <header>
+    <nav class="asus">
         <ul>
             <li><a href="#" class="active">Home</a></li>
-            <li><a href="donate.php">Our Animals</a></li>
+            <li><a href="#">Our Animals</a></li>
             <li><a href="#">About</a></li>
             <li><a href="contact.php">Contact</a></li>
+            <li><a href="#">Sign Up</a></li>
+            <li><a href="#">Login</a></li>
         </ul>
     </nav>
-
-    <div class="star">
-        <div class="card">
-            <p>The current state of stray animals in the Philippines is a growing concern, particularly in urban areas where the…</p>
-            <button class="adoptbutton" >ADOPT</button>
-        </div>
-        <div class="card">
-            <p>The current state of stray animals in the Philippines is a growing concern, particularly in urban areas where the…</p>
-            <button class="donatebutton" ><a href="donate.php">DONATE</a></button>
-        </div>
-    </div>
-
+    </header>
+    <main>
+        <section class="hero">
+            <img src="background.jpg" alt="Dog">
+            <h2>ANIMALS NEED</h2>
+            <h1>Your Help!</h1>
+            <p>You can chip in with money & effort. Dogs, Cats and Even Racoons Adopt Any Pets You Like!</p>
+            <button><a href="donate.php">Donate Now</a></button>
+            <button><a href="#">Adopt Now</a></button>
+        </section>
 </body>
 </html>
