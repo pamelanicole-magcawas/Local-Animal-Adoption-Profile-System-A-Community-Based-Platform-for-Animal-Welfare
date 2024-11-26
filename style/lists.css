@@ -1,0 +1,81 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    background-color: #f8f9fa;
+    padding-top: 80px;
+}
+
+h2 {
+    text-align: center;
+    color: #000;
+    font-size: 50px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    width: 25%;
+    height: 4px;
+    display: block;
+    margin: 0 auto;
+    background-color: #4caf50;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.animal-section {
+    margin-bottom: 70px;
+}
+
+.animal-section h3 {
+    text-align: left;
+    font-size: 32px;
+    color: #4caf50;
+    margin-bottom: 15px;
+    margin-top: 0; 
+    display: block; 
+    width: 100%;
+    position: relative; 
+    margin-left: 45px;
+}
+
+
+.animal-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.animal-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+.animal-card h4 {
+    margin: 10px 0;
+    font-size: 30px;
+}
+
+.animal-card p {
+    margin: 5px 0;
+}
+
+.no-animals {
+    text-align: center;
+    font-size: 30px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+footer {
+    margin-top: 150px;
+    text-align: center;
+    color:#333;
+}
