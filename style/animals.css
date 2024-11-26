@@ -60,16 +60,8 @@ select {
 }
 
 form input[type="text"], 
-form input[type="number"] {
-    width: 35%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-input[type="date"] {
+form input[type="number"], 
+form input[type="text"]{
     width: 35%;
     padding: 10px;
     margin: 8px 0;
@@ -108,4 +100,11 @@ h2 {
     margin-top: 80px;
     margin-bottom: 30px;
     text-align: center;
+}
+
+footer {
+    margin-top: 150px;
+    text-align: center;
+    color:#333;
+    margin-bottom: 18px;
 }

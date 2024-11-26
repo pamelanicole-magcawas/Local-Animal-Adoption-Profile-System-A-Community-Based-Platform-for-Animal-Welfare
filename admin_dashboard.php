@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Animal Adoption</title>
-    <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/admin_dashboard.css">
+</head>
 
 <body>
     <nav>
@@ -14,6 +15,7 @@
             <li><a href="manage_animals.php">Manage Animals</a></li>
             <li><a href="manage_adoptions.php">Manage Adoptions</a></li>
             <li><a href="manage_donations.php">Manage Donations</a></li>
+            <li><a href="manage_reports.php">Manage Reports</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
@@ -40,9 +42,17 @@
                 <p>View and manage donations to your organization.</p>
                 <a href="manage_donations.php">Go to Donations</a>
             </div>
+            <div class="card">
+                <h3>Manage Reports</h3>
+                <p>View and manage user-submitted reports regarding concerns, issues, or emergencies.</p>
+                <a href="manage_reports.php">Go to Reports</a>
+            </div>
         </div>
     </div>
+
+    <footer>
+        Copyright &copy; 2024 Animal Adoption Organization. All Rights Reserved.
+    </footer>
 </body>
-</head>
 
 </html>

@@ -50,6 +50,6 @@
 
     } else {
         echo 'Error!';
-}
+    }
 
 ?>

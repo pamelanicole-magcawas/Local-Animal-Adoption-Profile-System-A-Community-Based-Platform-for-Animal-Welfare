@@ -73,5 +73,9 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        Copyright &copy; 2024 Animal Adoption Organization. All Rights Reserved.
+    </footer>
 </body>
 </html>

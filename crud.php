@@ -54,7 +54,7 @@ class Animal
 
     public function update()
     {
-        $query = "UPDATE " . $this->tbl_name . " SET name = :name, age = :age, sex = :sex, treatments = :treatments, animal_type = :animal_type, size = :size, energy_level = :energy_level, friendliness = :friendliness, personality = :personality, rescue_date = :rescue_date WHERE id = :id";
+        $query = "UPDATE " . $this->tbl_name . " SET name = :name, age = :age, sex = :sex, treatments = :treatments, animal_type = :animal_type, size = :size, energy_level = :energy_level, personality = :personality, rescue_date = :rescue_date WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
 
@@ -77,6 +77,7 @@ class Animal
         $stmt->bindParam(":size", $this->size);
         $stmt->bindParam(":energy_level", $this->energy_level);
         $stmt->bindParam(":personality", $this->personality);
+        $stmt->bindParam(":rescue_date", $this->rescue_date);
         $stmt->bindParam(":id", $this->id);
 
         if ($stmt->execute()) {

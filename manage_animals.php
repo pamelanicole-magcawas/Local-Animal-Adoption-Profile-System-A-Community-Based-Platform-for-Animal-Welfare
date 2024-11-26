@@ -6,15 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animals</title>
    
-     <!-- DataTables CSS -->
-     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
-    <!-- jQuery -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-    <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css">
-    <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="style/animals.css">
@@ -33,6 +28,7 @@
             <li><a href="manage_animals.php">Manage Animals</a></li>
             <li><a href="manage_adoptions.php">Manage Adoptions</a></li>
             <li><a href="manage_donations.php">Manage Donations</a></li>
+            <li><a href="manage_reports.php">Manage Reports</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
@@ -131,6 +127,10 @@
             ?>
         </tbody>
     </table>
+
+    <footer>
+        Copyright &copy; 2024 Animal Adoption Organization. All Rights Reserved.
+    </footer>
 </body>
 
 </html>

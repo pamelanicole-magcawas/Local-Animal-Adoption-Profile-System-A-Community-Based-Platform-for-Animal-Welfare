@@ -176,3 +176,10 @@ body {
 form {
     text-align: center;
 }
+
+footer {
+    margin-top: 150px;
+    text-align: center;
+    color:#333;
+    margin-bottom: 18px;
+}

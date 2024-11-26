@@ -34,6 +34,7 @@ if (isset($_POST['id'])) {
             <li><a href="manage_animals.php">Manage Animals</a></li>
             <li><a href="manage_adoptions.php">Manage Adoptions</a></li>
             <li><a href="manage_donations.php">Manage Donations</a></li>
+            <li><a href="manage_reports.php">Manage Reports</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
@@ -66,5 +67,9 @@ if (isset($_POST['id'])) {
         <br><br>
         <input type="submit" value="Update">
     </form>
+
+    <footer>
+        Copyright &copy; 2024 Animal Adoption Organization. All Rights Reserved.
+    </footer>
 </body>
 </html>
