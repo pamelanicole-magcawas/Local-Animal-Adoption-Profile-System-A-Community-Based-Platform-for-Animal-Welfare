@@ -1,12 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+body {
+    font-family: Arial, sans-serif;
 }
 
 .asus {
     background-color: #f9f9f9;
-    padding: 50px 30px;
+    padding: 30px 30px;
     display: flex;
     justify-content: flex-end;
     text-transform: uppercase;
@@ -34,52 +33,27 @@
     font-weight: bold;
 }
 
-
-.star {
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
-    width: 95%;
-
+.hero {
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 50px 0;
 }
 
-.card {
-    border-width: 600;
-    height: 550px;
-    padding: 20px;
-    margin: 15px 10px;
-    background-color: #b9b9b9;
-    border-radius: 5px;
+.hero img {
+    max-width: 200%;
+    height: auto;
 }
 
-.card p {
-    font-size: 40px;
-    color: #232121;
-    margin-bottom: 15px;
+.hero h2, .hero h1, .hero p {
+    margin: 10px 0;
 }
 
-.adoptbutton {
-    padding: 25px 50px;
-    background-color: #f5e1da;
-    cursor: pointer;
-    font-weight: bold;
-    color: black;
-    border-radius: 10px;
-    position: absolute;
-    bottom: 100px;
-    left: 325px;
-    
-}
-
-.donatebutton {
-    padding: 25px 50px;
-    background-color: #f5e1da;
-    cursor: pointer;
-    font-weight: bold;
-    color: black;
-    border-radius: 10px;
-    position: absolute;
-    bottom: 100px;
-    right: 325px;
-    
+.hero button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
