@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-    <link rel="stylesheet" href="manage_reports.css">
+    <link rel="stylesheet" href="style/manage_reports.css">
 
     <script>
         $(document).ready(function() {
