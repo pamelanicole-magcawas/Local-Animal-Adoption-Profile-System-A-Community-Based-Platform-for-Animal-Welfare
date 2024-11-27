@@ -1,12 +1,24 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "DonationSystem";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+class Database {
+    private $host = "localhost";
+    private $db_name = "db_donation";
+    private $username = "root";
+    private $password = "";
+    public $conn;
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    public function getConnect() {
+        $this->conn = null;
+
+        try {
+            $this->conn = new PDO("mysql:host=" .$this->host .";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $exception) {
+            echo 'Connection Error!' . $exception->getMessage();
+        }
+
+        return $this->conn;
+    }
 }
+
 ?>
