@@ -55,12 +55,6 @@
             color: #333;
         }
 
-        .content h2 {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
         footer {
             background-color: #333;
             color: white;
@@ -106,11 +100,10 @@
     </main>
     <footer>
         <div class="emails">
-            <a href="mailto:example@gmail.com">example@gmail.com</a>
-            <a href="mailto:example@gmail.com">example@gmail.com</a>
-            <a href="mailto:example@gmail.com">example@gmail.com</a>
+            <a href="mailto:example@gmail.com">magcawas@gmail.com</a>
+            <a href="mailto:example@gmail.com">mergildo@gmail.com</a>
+            <a href="mailto:example@gmail.com">dipasupil@gmail.com</a>
         </div>
-        <p>&copy; 2024 Animal Adoption Organization. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
