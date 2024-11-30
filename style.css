@@ -1,25 +1,18 @@
-
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-/* Body Styling */
 body {
-    background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
-    color: #333;
-    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f8fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-/* Container */
 .container {
     background: #fff;
-    width: 400px;
+    max-width: 600px;
+    width: 90%;
     padding: 2rem;
-    margin: 5rem auto;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -30,78 +23,76 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-/* Form Title */
-.form-title {
-    font-size: 1.8rem;
-    font-weight: bold;
+h1 {
+    font-size: 2rem;
     text-align: center;
+    color: #333;
     margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
     color: #444;
+    margin-top: 1.5rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
 }
 
-/* Input Fields */
-.input-group {
+.note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+/* Form Fields */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    flex: 1;
     position: relative;
-    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.input-group i {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: #888;
-    font-size: 1.2rem;
+label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
 }
 
-input {
-    width: 100%;
-    padding: 10px 35px;
+input, textarea {
+    font-size: 1rem;
+    padding: 10px 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
     transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-input:focus {
+input:focus, textarea:focus {
     outline: none;
     border-color: #4c82f1;
     box-shadow: 0 0 5px rgba(76, 130, 241, 0.5);
 }
 
-input::placeholder {
-    color: #aaa;
-    font-size: 0.9rem;
+textarea {
+    height: 100px;
+    resize: none;
 }
 
-/* Input Labels */
-label {
-    position: absolute;
-    left: 35px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #aaa;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-input:focus ~ label,
-input:not(:placeholder-shown) ~ label {
-    top: -10px;
-    left: 5px;
-    font-size: 0.8rem;
-    color: #4c82f1;
-}
-
-/* Buttons */
-.btn {
-    display: inline-block;
+/* Submit Button */
+button {
     width: 100%;
-    padding: 10px 0;
+    padding: 12px 0;
     font-size: 1.1rem;
     font-weight: bold;
-    text-align: center;
     color: #fff;
     background: #4c82f1;
     border: none;
@@ -110,81 +101,7 @@ input:not(:placeholder-shown) ~ label {
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.btn:hover {
+button:hover {
     background: #3a6bcc;
     transform: translateY(-2px);
-}
-
-/* Recover Link */
-.recover {
-    text-align: right;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-}
-
-.recover a {
-    text-decoration: none;
-    color: #4c82f1;
-    transition: color 0.3s ease;
-}
-
-.recover a:hover {
-    color: #3a6bcc;
-    text-decoration: underline;
-}
-
-/* OR Divider */
-.or {
-    text-align: center;
-    font-size: 1rem;
-    margin: 1rem 0;
-    color: #666;
-}
-
-/* Social Media Icons */
-.icons {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.icons i {
-    color: #4c82f1;
-    padding: 10px 15px;
-    font-size: 1.4rem;
-    border: 2px solid #e2e2e2;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 0 8px;
-    transition: all 0.3s ease;
-}
-
-.icons i:hover {
-    background: #4c82f1;
-    color: #fff;
-    border-color: #4c82f1;
-}
-
-/* Links Section */
-.links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-    font-size: 0.95rem;
-    color: #666;
-}
-
-button {
-    border: none;
-    background: none;
-    color: #4c82f1;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-button:hover {
-    color: #3a6bcc;
-    text-decoration: underline;
 }
