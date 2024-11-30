@@ -45,14 +45,14 @@
             <?php
 
             require_once 'dbConnect.php';
-            require_once 'emergency_request.php';
+            require_once 'assistance_request.php';
 
 
             $database = new Database();
             $db = $database->getConnect();
 
-            $emergencyRequest = new EmergencyRequest($db);
-            $stmt = $emergencyRequest->read();
+            $assistanceRequest  = new AssistanceRequest($db);
+            $stmt = $assistanceRequest ->readInquiry();
             $num = $stmt->rowCount();
 
             if ($num > 0) {
