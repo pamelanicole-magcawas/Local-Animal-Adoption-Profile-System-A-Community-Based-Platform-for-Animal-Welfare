@@ -1,22 +1,20 @@
 <?php
 require_once 'dbConnect.php';  
-require_once 'emergency_request.php';  
+require_once 'assistance_request.php';  
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $database = new Database(); 
     $db = $database->getConnect(); 
 
-    $emergencyRequest = new EmergencyRequest($db);
+    $assistanceRequest = new AssistanceRequest($db);
 
-    $emergencyRequest->user_name = htmlspecialchars(trim($_POST['user_name']));
-    $emergencyRequest->user_email = htmlspecialchars(trim($_POST['user_email']));
-    $emergencyRequest->user_phone = htmlspecialchars(trim($_POST['user_phone']));
-    $emergencyRequest->emergency_message = htmlspecialchars(trim($_POST['emergency_message']));
+    $assistanceRequest ->user_name = htmlspecialchars(trim($_POST['user_name']));
+    $assistanceRequest ->user_email = htmlspecialchars(trim($_POST['user_email']));
+    $assistanceRequest ->user_phone = htmlspecialchars(trim($_POST['user_phone']));
+    $assistanceRequest ->emergency_message = htmlspecialchars(trim($_POST['emergency_message']));
 
-    $emergency_message = $emergencyRequest->emergency_message;
-
-    if ($emergencyRequest->create()) {
+    if ($assistanceRequest ->createInquiry()) {
         echo "
         <!DOCTYPE html>
         <html lang='en'>
@@ -29,17 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <body>
         <script>
         Swal.fire({
-            title: 'Success!',
-            html: `Thank you for submitting your emergency request. We have received the following details:
-            <br><br>
-            <strong>Emergency Message:</strong><br>
-            {$emergency_message}<br><br>
-            Our team will contact you shortly for further assistance.<br><br>
-            <strong>Best regards,<br>Animal Care Team</strong>`,
+            title: 'Report Sent!',
+            text: 'Our team will contact you shortly for further assistance.',
             icon: 'success'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'emergency_request_form.php'; // Redirect
+                window.location.href = 'report.php'; // Redirect
             }
         });
         </script>
