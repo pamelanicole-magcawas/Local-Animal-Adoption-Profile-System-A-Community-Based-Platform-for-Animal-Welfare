@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('background.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navbar {
+    width: 85%;
+    margin: auto;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.content {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.content p {
+    margin: 20px auto;
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    width: 80%;
+}
+
+button {
+    width: 220px;
+    padding: 15px 0;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem;
+}
+
+span {
+    background: #009688;
+    height: 100%;
+    width: 0%;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+button:hover span {
+    width: 100%;
+}
+
+button:hover {
+    border: none;
+}
+
+button a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    text-align: left;
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.8;
+}
+
+ul li::before {
+    content: "📋";
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.adoption-fee {
+    font-weight: bold;
+    color: #e08e0b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .content p {
+        width: 90%;
+    }
+
+    button {
+        width: 180px;
+        padding: 12px 0;
+    }
+}

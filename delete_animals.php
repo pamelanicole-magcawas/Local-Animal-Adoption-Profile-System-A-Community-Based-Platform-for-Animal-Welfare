@@ -1,14 +1,11 @@
 <?php
 require_once 'dbConnect.php';
 require_once 'crud.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $database = new Database();
     $db = $database->getConnect();
-
     $animal = new Animal($db);
     $animal->id = htmlspecialchars(trim($_POST['id']));
-
     if ($animal->delete()) {
         echo  "
         <!DOCTYPE html>
@@ -21,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </head>
         <body>
         <script>
-
         Swal.fire({
             title: 'Delete',
             text: 'Animal deleted successfully',
@@ -35,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
         </body>
         </html> ";
-
     } else {
         echo  "
         <!DOCTYPE html>
@@ -48,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </head>
         <body>
         <script>
-
         Swal.fire({
             title: 'Error!',
             text: 'Error Deleting!',
