@@ -15,7 +15,7 @@
         </p>
     </div>
 
-    <form action="createRequest.php" method="POST">
+    <form action="create_request.php" method="POST">
         <label for="user_name">Name:</label>
         <input type="text" name="user_name" id="user_name" required><br>
 
