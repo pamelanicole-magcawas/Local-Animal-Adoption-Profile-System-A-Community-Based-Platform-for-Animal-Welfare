@@ -15,6 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $animal->energy_level = htmlspecialchars($_POST['energy_level']);
     $animal->personality = htmlspecialchars($_POST['personality']);
     $animal->rescue_date = htmlspecialchars($_POST['rescue_date']);
+    $animal->status = htmlspecialchars($_POST['status']);
+    
     if ($animal->update()) {
         echo "
         <!DOCTYPE html>

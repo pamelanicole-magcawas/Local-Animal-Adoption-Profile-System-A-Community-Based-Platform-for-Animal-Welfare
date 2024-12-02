@@ -41,9 +41,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoption Application</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style/to_adopt.css">
 </head>
+
 <body>
+    <nav>
+        <ul>
+            <li><a href="user_homepage.php"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="view_animals.php"><i class="fas fa-paw"></i> Our Animals</a></li>
+            <li><a href="about.php"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="report.php"><i class="fas fa-exclamation-circle"></i> Report</a></li>
+            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         <h1>ADOPTION APPLICATION</h1>
         <p class="note">* indicates required fields</p>
@@ -107,7 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="form-group">
                         <label for="pet_preference">Which pet are you interested in adopting? *</label>
                         <select id="pet_preference" name="pet_preference" required>
-                            <option value="">Select an option</option>
+                        <option value="">Select an option</option>
+                        <option value="">Select an option</option>
                             <option value="cat" <?php echo (isset($_POST['pet_preference']) && $_POST['pet_preference'] === 'cat') ? 'selected' : ''; ?>>Cat</option>
                             <option value="dog" <?php echo (isset($_POST['pet_preference']) && $_POST['pet_preference'] === 'dog') ? 'selected' : ''; ?>>Dog</option>
                         </select>
@@ -217,5 +230,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         <?php endif; ?>
     </div>
+
+    <footer>
+        Copyright &copy; 2024 Animal Adoption Organization. All Rights Reserved.
+    </footer>
+
 </body>
 </html>

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animal Adoption</title>
-    <link rel="stylesheet" href="status.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style/donate.css">
+
     <script>
         function showMethod(str) {
             if (str == "") {
@@ -27,20 +29,22 @@
 </head>
 
 <body>
-
-    <nav class="port">
+    <nav>
         <ul>
-            <li><a href="index.php">HOME</a></li>
-            <li><a href="#">OUR ANIMALS</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="contact.php">CONTACT</a></li>
+            <li><a href="user_homepage.php"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="view_animals.php"><i class="fas fa-paw"></i> Our Animals</a></li>
+            <li><a href="about.php"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="report.php"><i class="fas fa-exclamation-circle"></i> Report</a></li>
+            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>
 
-    <header class="sonic">
-        <h1>Join Us in Supporting Animals in Need</h1>
-        <p>Your generous donation ensures that animals receive essential food, shelter, and medical care. Each contribution brings us closer to providing them with a better, safer life.</p>
-    </header>
+    <div class="heading">
+        <h2>Together for Animals</h2>
+        <p>
+        Your generous donation ensures that animals receive essential food, shelter, and medical care. Each contribution brings us closer to providing them with a better, safer life.
+        </p>
+    </div>
 
     <form method="POST" action="process_donation.php">
         Name: <input type="text" id="name" name="name" required>
@@ -69,7 +73,6 @@
     <footer>
         Copyright &copy; 2024 Animal Adoption Organization. All Rights Reserved.
     </footer>
-
 
 </body>
 

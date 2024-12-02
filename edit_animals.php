@@ -13,6 +13,7 @@ if (isset($_POST['id'])) {
     $energy_level = htmlspecialchars($_POST['energy_level']);
     $personality = htmlspecialchars($_POST['personality']);
     $rescue_date = htmlspecialchars($_POST['rescue_date']);
+    $status = htmlspecialchars($_POST['status']);
 } else {
     echo "Invalid request.";
     exit;
@@ -64,6 +65,8 @@ if (isset($_POST['id'])) {
         Personality: <input type="text" name="personality" value="<?php echo $personality; ?>" required>
         <br><br>
         Rescue Date: <input type="date" name="rescue_date" value="<?php echo $rescue_date; ?>" required>
+        <br><br>
+        Status: <input type="text" name="status" value="<?php echo $status; ?>" required>
         <br><br>
         <input type="submit" value="Update">
     </form>
