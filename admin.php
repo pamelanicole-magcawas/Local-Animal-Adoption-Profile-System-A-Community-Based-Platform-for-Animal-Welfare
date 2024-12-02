@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Adoption Applications</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <h2>Adoption Applications</h2>

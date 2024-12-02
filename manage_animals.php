@@ -57,6 +57,8 @@
         <br><br>
         Rescue Date: <input type="date" id="rescue_date" name="rescue_date" required>
         <br><br>
+        Status: <input type="text" id="status" name="status" required>
+        <br><br>
         <input type="submit" value="Create">
     </form>
 
@@ -74,6 +76,7 @@
                 <th>Energy Level</th>
                 <th>Personality</th>
                 <th>Rescue Date</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -102,6 +105,7 @@
                     echo "<td>" . (isset($row['Energy_Level']) ? htmlspecialchars($row['Energy_Level']) : '') . "</td>";
                     echo "<td>" . (isset($row['Personality']) ? htmlspecialchars($row['Personality']) : '') . "</td>";
                     echo "<td>" . (isset($row['Rescue_Date']) ? htmlspecialchars($row['Rescue_Date']) : '') . "</td>";
+                    echo "<td>" . (isset($row['Status']) ? htmlspecialchars($row['Status']) : '') . "</td>";
                     echo "<td class='actions'>
                         <form method='POST' action='edit_animals.php' style='display:inline;'>
                             <input type='hidden' name='id' value='" . htmlspecialchars($row['ID']) . "'>
@@ -114,6 +118,7 @@
                             <input type='hidden' name='energy_level' value='" . htmlspecialchars($row['Energy_Level']) . "'>
                             <input type='hidden' name='personality' value='" . htmlspecialchars($row['Personality']) . "'>
                             <input type='hidden' name='rescue_date' value='" . htmlspecialchars($row['Rescue_Date']) . "'>
+                            <input type='hidden' name='status' value='" . htmlspecialchars($row['Status']) . "'>
                             <input type='submit' value='Edit'>
                         </form>
                         <form method='POST' action='delete_animals.php' style='display:inline;'>
