@@ -1,19 +1,9 @@
 <?php
-session_start();
-
-// Generate CSRF token
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
-
+require_once 'db_connect.php';
 $errors = [];
+$success_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validate CSRF token
-    if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-        die('CSRF token mismatch');
-    }
-
     // Validate form fields
     $required_fields = ['first_name', 'last_name', 'address', 'phone', 'email', 'adoption_reason', 'pet_preference', 'other_pets', 'living_situation', 'home_type', 'own_or_rent', 'landlord_permission', 'hours_alone', 'exercise_plan', 'vet_name', 'emergency_care', 'return_pet'];
     foreach ($required_fields as $field) {
@@ -29,8 +19,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Process form if no errors
     if (empty($errors)) {
-        // TODO: Process the form data (e.g., save to database, send email)
-        $success_message = "Thank you for submitting your adoption application!";
+        $result = insertApplication($conn, $_POST);
+        if (strpos($result, 'Error') === false) {
+            $success_message = "Thank you for submitting your adoption application!";
+        } else {
+            $errors[] = $result;
+        }
+    }
+}
+
+// Insert application data
+function insertApplication($conn, $data) {
+    $sql = "INSERT INTO adoption_applications (first_name, last_name, address, phone, email, adoption_reason, pet_preference, other_pets, living_situation, home_type, own_or_rent, landlord_permission, hours_alone, exercise_plan, vet_name, emergency_care, return_pet) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssssssssssissss", 
+        $data['first_name'], 
+        $data['last_name'], 
+        $data['address'], 
+        $data['phone'], 
+        $data['email'], 
+        $data['adoption_reason'], 
+        $data['pet_preference'], 
+        $data['other_pets'], 
+        $data['living_situation'], 
+        $data['home_type'], 
+        $data['own_or_rent'], 
+        $data['landlord_permission'], 
+        $data['hours_alone'], 
+        $data['exercise_plan'], 
+        $data['vet_name'], 
+        $data['emergency_care'], 
+        $data['return_pet']
+    );
+
+    if ($stmt->execute()) {
+        return "New application submitted successfully";
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+// Retrieve all applications
+function getApplications($conn) {
+    $sql = "SELECT * FROM adoption_applications";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return [];
     }
 }
 ?>
@@ -58,14 +97,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
 
-        <?php if (isset($success_message)): ?>
+        <?php if ($success_message): ?>
             <div class="success-message">
                 <?php echo htmlspecialchars($success_message); ?>
             </div>
         <?php else: ?>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-                
                 <h2>APPLICANT'S INFO</h2>
                 <div class="form-row">
                     <div class="form-group">
@@ -219,3 +256,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </body>
 </html>
+
+<?php
+$conn->close();
+?>
+
