@@ -1,9 +1,19 @@
 <?php
-require_once 'db_connect.php';
+session_start();
+
+// Generate CSRF token
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 $errors = [];
-$success_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validate CSRF token
+    if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        die('CSRF token mismatch');
+    }
+
     // Validate form fields
     $required_fields = ['first_name', 'last_name', 'address', 'phone', 'email', 'adoption_reason', 'pet_preference', 'other_pets', 'living_situation', 'home_type', 'own_or_rent', 'landlord_permission', 'hours_alone', 'exercise_plan', 'vet_name', 'emergency_care', 'return_pet'];
     foreach ($required_fields as $field) {
@@ -19,57 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Process form if no errors
     if (empty($errors)) {
-        $result = insertApplication($conn, $_POST);
-        if (strpos($result, 'Error') === false) {
-            $success_message = "Thank you for submitting your adoption application!";
-        } else {
-            $errors[] = $result;
-        }
-    }
-}
-
-// Insert application data
-function insertApplication($conn, $data) {
-    $sql = "INSERT INTO adoption_applications (first_name, last_name, address, phone, email, adoption_reason, pet_preference, other_pets, living_situation, home_type, own_or_rent, landlord_permission, hours_alone, exercise_plan, vet_name, emergency_care, return_pet) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssssssissss", 
-        $data['first_name'], 
-        $data['last_name'], 
-        $data['address'], 
-        $data['phone'], 
-        $data['email'], 
-        $data['adoption_reason'], 
-        $data['pet_preference'], 
-        $data['other_pets'], 
-        $data['living_situation'], 
-        $data['home_type'], 
-        $data['own_or_rent'], 
-        $data['landlord_permission'], 
-        $data['hours_alone'], 
-        $data['exercise_plan'], 
-        $data['vet_name'], 
-        $data['emergency_care'], 
-        $data['return_pet']
-    );
-
-    if ($stmt->execute()) {
-        return "New application submitted successfully";
-    } else {
-        return "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
-
-// Retrieve all applications
-function getApplications($conn) {
-    $sql = "SELECT * FROM adoption_applications";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        return $result->fetch_all(MYSQLI_ASSOC);
-    } else {
-        return [];
+        // TODO: Process the form data (e.g., save to database, send email)
+        $success_message = "Thank you for submitting your adoption application!";
     }
 }
 ?>
@@ -80,9 +41,21 @@ function getApplications($conn) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoption Application</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style/to_adopt.css">
 </head>
+
 <body>
+    <nav>
+        <ul>
+            <li><a href="user_homepage.php"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="view_animals.php"><i class="fas fa-paw"></i> Our Animals</a></li>
+            <li><a href="about.php"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="report.php"><i class="fas fa-exclamation-circle"></i> Report</a></li>
+            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         <h1>ADOPTION APPLICATION</h1>
         <p class="note">* indicates required fields</p>
@@ -97,12 +70,14 @@ function getApplications($conn) {
             </div>
         <?php endif; ?>
 
-        <?php if ($success_message): ?>
+        <?php if (isset($success_message)): ?>
             <div class="success-message">
                 <?php echo htmlspecialchars($success_message); ?>
             </div>
         <?php else: ?>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+                
                 <h2>APPLICANT'S INFO</h2>
                 <div class="form-row">
                     <div class="form-group">
@@ -144,7 +119,8 @@ function getApplications($conn) {
                     <div class="form-group">
                         <label for="pet_preference">Which pet are you interested in adopting? *</label>
                         <select id="pet_preference" name="pet_preference" required>
-                            <option value="">Select an option</option>
+                        <option value="">Select an option</option>
+                        <option value="">Select an option</option>
                             <option value="cat" <?php echo (isset($_POST['pet_preference']) && $_POST['pet_preference'] === 'cat') ? 'selected' : ''; ?>>Cat</option>
                             <option value="dog" <?php echo (isset($_POST['pet_preference']) && $_POST['pet_preference'] === 'dog') ? 'selected' : ''; ?>>Dog</option>
                         </select>
@@ -254,10 +230,10 @@ function getApplications($conn) {
             </form>
         <?php endif; ?>
     </div>
+
+    <footer>
+        Copyright &copy; 2024 Animal Adoption Organization. All Rights Reserved.
+    </footer>
+
 </body>
 </html>
-
-<?php
-$conn->close();
-?>
-
