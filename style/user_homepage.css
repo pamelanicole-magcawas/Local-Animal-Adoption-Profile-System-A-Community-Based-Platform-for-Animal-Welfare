@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #f8f9fa;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+nav {
+    padding: 15px 40px; 
+    position: fixed;
+    top: 30px;  
+    right: 0; 
+    z-index: 1000;
+    background-color: transparent;  
+    box-shadow: none;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 30px; 
+}
+
+nav ul li a {
+    color: #000000; 
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px; 
+    border-radius: 4px;
+    font-size: 25px;  
+    transition: color 0.3s ease, text-decoration 0.3s ease;  
+}
+
+nav ul li a:hover {
+    color: #4caf50;  
+    text-decoration: underline;  
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #000;
+}
+
+.content h1 {
+    font-size: 70px;
+    margin-top: 80px;
+}
+
+.content p {
+    margin: 20px auto;
+    font-weight: 100;
+    line-height: 25px;
+}
+
+button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #4caf50;
+    background: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+button a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 50px; 
+}
+
+button:hover {
+    border: none;
+    transform: scale(1.1);
+}
+
+span {
+    background: #4caf50;
+    height: 100%;
+    width: 0%;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+button:hover span {
+    width: 100%;
+}
+
