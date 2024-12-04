@@ -16,7 +16,7 @@
             <li><a href="manage_adoptions.php">Manage Adoptions</a></li>
             <li><a href="manage_donations.php">Manage Donations</a></li>
             <li><a href="manage_reports.php">Manage Reports</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="admin_logout.php">Logout</a></li>
         </ul>
     </nav>
 
