@@ -1,42 +1,57 @@
 <?php
-if (empty($_POST["fName"])) {
-    die("Name is required");
-}
-if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-    die("Valid email is required");
-}
-if (strlen($_POST["password"]) < 8) {
-    die("Password must be at least 8 characters");
-}
-if (!preg_match("/[a-z]/i", $_POST["password"])) {
-    die("Password must contain at least one letter");
-}
-if (!preg_match("/[0-9]/", $_POST["password"])) {
-    die("Password must contain at least one number");
-}
-if ($_POST["password"] !== $_POST["password_confirmation"]) {
-    die("Passwords must match");
-}
+require_once 'database.php';
 
-$password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-$mysqli = require __DIR__ . "/database.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = sanitize_input($_POST["fName"]);
+    $email = sanitize_input($_POST["email"]);
+    $password = $_POST["password"];
+    $password_confirmation = $_POST["password_confirmation"];
 
-$sql = "INSERT INTO users (fName, email, password_hash) VALUES (?, ?, ?)";
-$stmt = $mysqli->stmt_init();
+    $errors = [];
 
-if (!$stmt->prepare($sql)) {
-    die("SQL error: " . $mysqli->error);
-}
+    if (empty($full_name)) {
+        $errors[] = "Full name is required";
+    }
 
-$stmt->bind_param("sss", $_POST["fName"], $_POST["email"], $password_hash);
+    if (empty($email)) {
+        $errors[] = "Email is required";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format";
+    }
 
-if ($stmt->execute()) {
-    header("Location: signup-success.html");
-    exit;
-} else {
-    if ($mysqli->errno === 1062) {
-        die("Email already taken");
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        $errors[] = "Email already exists";
+    }
+
+    if (empty($password)) {
+        $errors[] = "Password is required";
+    } elseif (strlen($password) < 8) {
+        $errors[] = "Password must be at least 8 characters long";
+    }
+
+    if ($password !== $password_confirmation) {
+        $errors[] = "Passwords do not match";
+    }
+
+    if (empty($errors)) {
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $stmt = $pdo->prepare("INSERT INTO users (full_name, email, password_hash) VALUES (?, ?, ?)");
+        
+        if ($stmt->execute([$full_name, $email, $password_hash])) {
+            set_flash_message('success', "Registration successful. You can now log in.");
+            header("Location: index.php");
+            exit;
+        } else {
+            set_flash_message('danger', "Registration failed. Please try again.");
+        }
     } else {
-        die($mysqli->error . " " . $mysqli->errno);
+        set_flash_message('danger', implode("<br>", $errors));
     }
 }
+
+// Redirect to index.php after processing
+header("Location: index.php");
+exit(); 

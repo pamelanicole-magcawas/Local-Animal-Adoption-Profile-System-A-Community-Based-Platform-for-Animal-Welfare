@@ -1,3 +1,17 @@
+<?php
+session_start();
+require_once 'database.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    set_flash_message('danger', 'Please log in to access the homepage.');
+    header("Location: index.php");
+    exit();
+}
+
+$user_name = $_SESSION['user_name'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
