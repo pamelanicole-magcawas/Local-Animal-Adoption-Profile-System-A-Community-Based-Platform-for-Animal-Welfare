@@ -1,13 +1,21 @@
+<?php
+require_once 'database.php';
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creating Account</title>
+    <title>User Authentication</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php display_flash_message(); ?>
+
     <div class="container" id="signup" style="display:none;">
         <h1 class="form-title">SIGN UP</h1>
         <form method="post" action="register.php" id="signupForm">
@@ -63,3 +71,4 @@
     <script src="login.js"></script>
 </body>
 </html>
+
