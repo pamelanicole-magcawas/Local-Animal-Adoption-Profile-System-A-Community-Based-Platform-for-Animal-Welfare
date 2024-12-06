@@ -37,16 +37,18 @@ nav ul li a:hover {
     color: #ffffff;
 }
 
-.container {
-    padding-top: 120px;
+h1 {
+    margin-top: 80px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
-.container h1{
-    color: #4caf50;
-    font-size: 80px;
+.no-users {
+    text-align: center;
+    color: #ff0000;
+    font-size: 18px;
+    font-weight: bold;
 }
-
 
 footer {
     position: fixed;

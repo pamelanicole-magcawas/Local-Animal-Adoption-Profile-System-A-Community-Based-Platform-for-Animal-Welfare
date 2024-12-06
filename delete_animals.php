@@ -1,6 +1,7 @@
 <?php
 require_once 'dbConnect.php';
 require_once 'crud.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $database = new Database();
     $db = $database->getConnect();
@@ -24,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             icon: 'success'
         }).then((result) => {
             if(result.isConfirmed) {
-                window.location.href = 'manage_animals.php';
+                window.location.href = 'admin_animals.php';
             }
         });
         </script>
@@ -49,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             icon: 'info'
         }).then((result) => {
             if(result.isConfirmed) {
-                window.location.href = 'manage_animals.php';
+                window.location.href = 'admin_animals.php';
             }
         });
         </script>
