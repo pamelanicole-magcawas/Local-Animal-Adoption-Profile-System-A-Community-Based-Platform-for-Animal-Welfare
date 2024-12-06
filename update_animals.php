@@ -1,6 +1,7 @@
 <?php
 require_once 'dbConnect.php';
 require_once 'crud.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $database = new Database();
     $db = $database->getConnect();
@@ -15,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $animal->energy_level = htmlspecialchars($_POST['energy_level']);
     $animal->personality = htmlspecialchars($_POST['personality']);
     $animal->rescue_date = htmlspecialchars($_POST['rescue_date']);
-    $animal->status = htmlspecialchars($_POST['status']);
     
     if ($animal->update()) {
         echo "
@@ -31,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <script>
             Swal.fire({
             title: 'Success!',
-            text: 'Data was Updated successfully!',
-            icon: 'info'
+            text: 'The animal profile has been updated successfully!',
+            icon: 'success'
             }).then((result) => {
             if(result.isConfirmed) {
-                window.location.href = 'manage_animals.php';
+                window.location.href = 'admin_animals.php';
             }
             });
         </script>
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             icon: 'info'
         }).then((result) => {
             if(result.isConfirmed) {
-                window.location.href = 'manage_animals.php';
+                window.location.href = 'admin_animals.php';
             }
         });
         </script>

@@ -1,0 +1,110 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 25px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #4caf50;  
+    text-decoration: underline;  
+}
+
+h1 {
+    margin-top: 80px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 70px;
+    color: #4caf50;
+}
+
+.animal-section {
+    margin-bottom: 70px;
+}
+
+.animal-section h3 {
+    text-align: left;
+    font-size: 32px;
+    color: #4caf50;
+    margin-bottom: 15px;
+    margin-top: 0; 
+    display: block; 
+    width: 100%;
+    position: relative; 
+    margin-left: 45px;
+}
+
+.animal-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.animal-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+.animal-card h4 {
+    margin: 10px 0;
+    font-size: 30px;
+}
+
+.animal-card p {
+    margin: 5px 0;
+}
+
+.apply-button {
+    color: #4caf50;
+}
+
+.no-animals {
+    text-align: center;
+    font-size: 30px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0; 
+    left: 0;   
+    width: 100%; 
+    text-align: center;
+    background-color: #f8f9fa; 
+    padding: 10px 0;
+    color: #333;
+    margin-bottom: 0; 
+}

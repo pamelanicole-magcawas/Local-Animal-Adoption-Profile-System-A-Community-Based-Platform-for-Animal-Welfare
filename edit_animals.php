@@ -2,6 +2,24 @@
 require_once 'dbConnect.php';
 require_once 'crud.php';
 
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit;
+}
+
+// Ensure that the admin is redirected to the correct dashboard
+if ($_SESSION['username'] !== 'admin1') {
+    header("Location: login.php"); // Redirect back if not admin1
+    exit();
+}
+
+// Ensure that the admin is redirected to the correct dashboard
+if ($_SESSION['username'] !== 'admin1') {
+    header("Location: login.php"); // Redirect back if not admin1
+    exit();
+}
+
 if (isset($_POST['id'])) {
     $id = htmlspecialchars($_POST['id']);
     $name = htmlspecialchars($_POST['name']);
@@ -13,7 +31,6 @@ if (isset($_POST['id'])) {
     $energy_level = htmlspecialchars($_POST['energy_level']);
     $personality = htmlspecialchars($_POST['personality']);
     $rescue_date = htmlspecialchars($_POST['rescue_date']);
-    $status = htmlspecialchars($_POST['status']);
 } else {
     echo "Invalid request.";
     exit;
@@ -26,16 +43,14 @@ if (isset($_POST['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Animal Informations</title>
-    <link rel="stylesheet" href="style/edit.css">
+    <link rel="stylesheet" href="style/edit_animal.css">
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="admin_dashboard.php">Home</a></li>
-            <li><a href="manage_animals.php">Manage Animals</a></li>
-            <li><a href="manage_adoptions.php">Manage Adoptions</a></li>
-            <li><a href="manage_donations.php">Manage Donations</a></li>
-            <li><a href="manage_reports.php">Manage Reports</a></li>
+            <li><a href="admin_animals.php">Manage Animals</a></li>
+            <li><a href="admin_reports.php">Manage Reports</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
@@ -66,9 +81,9 @@ if (isset($_POST['id'])) {
         <br><br>
         Rescue Date: <input type="date" name="rescue_date" value="<?php echo $rescue_date; ?>" required>
         <br><br>
-        Status: <input type="text" name="status" value="<?php echo $status; ?>" required>
-        <br><br>
         <input type="submit" value="Update">
+        <br><br>
+        <br><br>
     </form>
 
     <footer>

@@ -1,53 +1,42 @@
 <?php
-require_once 'db_donation.php';
-require_once 'donations.php';
+session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $database = new Database();
-    $db = $database->getConnect();
+require_once 'DatabaseConnection.php';
+require_once 'donation.php';
 
-    $donations = new Donations($db);
-    $donations->name = htmlspecialchars(trim($_POST['name']));
-    $donations->email = htmlspecialchars(trim($_POST['email']));
-    $donations->donation_amount = htmlspecialchars(trim($_POST['donation_amount']));
-    $donations->payment_method = htmlspecialchars(trim($_POST['payment_method'])); 
+$databaseConnection = new DatabaseConnection();
+$conn = $databaseConnection->getConnect();
+$donation = new Donation($conn);
 
-    if ($donations->processDonation()) {
-        echo "
-        <!DOCTYPE html>
-        <html lang='en'>
-        <head>
-            <meta charset='UTF-8'>
-            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-            <title>SweetAlert</title>
-            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-        </head>
-        <body>
-        <script>
-        Swal.fire({
-            title: 'Donation Successful!',
-            text: 'You’ve Made a Paw-sitive Difference!',
-            icon: 'success'
-        }).then(() => {
-            window.location.href = 'donate.php';
-        });
-        </script>";
+function redirectWithMessage($type, $message, $location = 'donation_form.php') {
+    $_SESSION['alertType'] = $type;
+    $_SESSION['alertMessage'] = $message;
+    header("Location: $location");
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $amount = isset($_POST['amount']) ? trim($_POST['amount']) : '';
+    $message = isset($_POST['message']) ? trim($_POST['message']) : '';
+    $user_id = $_SESSION['user_id'];
+
+    // Validate donation amount
+    if (empty($amount) || !is_numeric($amount) || $amount <= 0) {
+        redirectWithMessage('error', 'Please enter a valid donation amount.');
+    }
+
+    // Validate message
+    if (empty($message) || strlen($message) > 255) {
+        redirectWithMessage('error', 'Message is required and must be less than 255 characters.');
+    }
+
+    // Process the donation
+    if ($donation->addDonation($user_id, $amount, $message)) {
+        redirectWithMessage('success', 'Your donation has been successfully processed.');
     } else {
-        echo "
-        <script>
-        Swal.fire({
-            title: 'Error!',
-            text: 'Unable to process your donation. Please try again.',
-            icon: 'error'
-        }).then((result) => {
-            if(result.isConfirmed) {
-                window.location.href = 'donate.php';
-            }
-        });
-        </script>
-
-        </body>
-        </html> ";
+        redirectWithMessage('error', 'There was an error processing your donation.');
     }
 }
+
+$totalApproved = $donation->getTotalApprovedDonations();
 ?>
