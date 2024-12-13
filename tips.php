@@ -1,27 +1,17 @@
 <?php
-class AnimalTipGenerator {
-    protected $animalTips;
+class AllTipsGenerator {
+    private $allTips;
 
     public function __construct() {
-        $this->animalTips = [
+        $generalTips = [
             "Always provide fresh, clean water.",
             "Ensure your pet has regular vet check-ups.",
             "Offer balanced meals with appropriate nutrition.",
             "Provide a safe and clean environment for your pets.",
             "Spend quality time with your pets to strengthen your bond."
         ];
-    }
 
-    public function getRandomTip() {
-        $randomIndex = array_rand($this->animalTips);
-        return $this->animalTips[$randomIndex];
-    }
-}
-
-// Dog-specific tips
-class DogTipGenerator extends AnimalTipGenerator {
-    public function __construct() {
-        $this->animalTips = [
+        $dogTips = [
             "Exercise your dog daily to keep them healthy and happy.",
             "Use positive reinforcement during training.",
             "Avoid feeding dogs chocolate, onions, or garlic—they are toxic!",
@@ -31,13 +21,8 @@ class DogTipGenerator extends AnimalTipGenerator {
             "Ensure your dog has proper identification, such as a microchip or ID tag.",
             "Monitor your dog's weight to avoid obesity and related health issues."
         ];
-    }
-}
 
-// Cat-specific tips
-class CatTipGenerator extends AnimalTipGenerator {
-    public function __construct() {
-        $this->animalTips = [
+        $catTips = [
             "Keep your cat’s litter box clean to prevent behavioral issues.",
             "Provide scratching posts to protect your furniture.",
             "Avoid giving milk to cats; many are lactose intolerant.",
@@ -47,6 +32,13 @@ class CatTipGenerator extends AnimalTipGenerator {
             "Provide high perches or cat trees for climbing and observing.",
             "Schedule regular dental check-ups to maintain oral health."
         ];
+
+        $this->allTips = array_merge($generalTips, $dogTips, $catTips);
+    }
+
+    public function getRandomTip() {
+        $randomIndex = array_rand($this->allTips);
+        return $this->allTips[$randomIndex];
     }
 }
 ?>

@@ -9,9 +9,8 @@ if (!isset($_SESSION['user_id'])) {
 
 include 'tips.php';
 
-$tipGenerator = new DogTipGenerator();
+$tipGenerator = new AllTipsGenerator();
 $randomTip = $tipGenerator->getRandomTip();
-
 ?>
 
 <!DOCTYPE html>
