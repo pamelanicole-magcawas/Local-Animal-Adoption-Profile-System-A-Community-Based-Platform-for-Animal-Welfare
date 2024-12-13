@@ -50,6 +50,7 @@ $services = $servicesObj->getServices($filters);
     <div class="container">
         <h1>Pet Services Finder</h1>
 
+        <!-- Filter Form -->
         <form action="" method="get">
             <label for="category">Category:</label>
             <input type="text" name="category" id="category" value="<?php echo htmlspecialchars($_GET['category'] ?? ''); ?>">
@@ -61,8 +62,14 @@ $services = $servicesObj->getServices($filters);
         </form>
 
         <h2>Pet Services Recommendations</h2>
+
         <?php
-        if ($services) {
+        if ($services === false) {
+            echo "<p>There was an error fetching the services. Please try again later.</p>";
+        } elseif (empty($services)) {
+            echo "<p>No pet services found matching your criteria.</p>";
+        } else {
+            // Display fetched services
             foreach ($services as $service) {
                 echo "<div class='services-profile'>";
                 echo "<h2>" . htmlspecialchars($service['name']) . "</h2>";
@@ -74,8 +81,6 @@ $services = $servicesObj->getServices($filters);
                 echo "<p><strong>Rating:</strong> " . htmlspecialchars($service['rating']) . "</p>";
                 echo "</div>";
             }
-        } else {
-            echo "<p>No pet services found matching your criteria.</p>";
         }
         ?>
     </div>
