@@ -23,9 +23,17 @@ class PetServices {
             $params['location'] = "%" . $filters['location'] . "%";
         }
 
-        $stmt = $this->db->prepare($query);
-        $stmt->execute($params);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $stmt = $this->db->prepare($query);
+
+            $stmt->execute($params);
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            error_log("Database query failed: " . $e->getMessage());
+            return false;  
+        }
     }
 }
 ?>
