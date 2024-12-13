@@ -141,7 +141,7 @@ if ($_SESSION['username'] !== 'admin1') {
             ?>
         </tbody>
     </table>
-
+    <br><br>
     <footer>
         Copyright &copy; 2024 Animal Adoption Organization. All Rights Reserved.
     </footer>
