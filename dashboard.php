@@ -156,6 +156,8 @@ $reports = $report->getReportsByUserId($userId);
                 <thead>
                     <tr>
                         <th>Report ID</th>
+                        <th>User Name</th>
+                        <th>Email</th>
                         <th>Full Name</th>
                         <th>Message</th>
                         <th>Status</th>
@@ -167,6 +169,8 @@ $reports = $report->getReportsByUserId($userId);
                         <?php while ($row = $reports->fetch(PDO::FETCH_ASSOC)): ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                <td><?php echo htmlspecialchars($row['user_name']); ?></td>
+                                <td><?php echo htmlspecialchars($row['email']); ?></td>
                                 <td><?php echo htmlspecialchars($row['full_name']); ?></td>
                                 <td><?php echo htmlspecialchars($row['message']); ?></td>
                                 <td><?php echo htmlspecialchars($row['status']); ?></td>
