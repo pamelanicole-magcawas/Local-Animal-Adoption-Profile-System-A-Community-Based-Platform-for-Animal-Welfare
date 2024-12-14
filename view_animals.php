@@ -79,7 +79,6 @@ $availableAnimals = $animalAvailable->getAvailableAnimals();
                     echo "<p><strong>Personality:</strong> " . htmlspecialchars($row['personality'] ?? 'N/A') . "</p>";
                     echo "<p><strong>Treatments:</strong> " . htmlspecialchars($row['treatments'] ?? 'N/A') . "</p>";
                     echo "<p><strong>Rescue Date:</strong> " . htmlspecialchars($row['rescue_date'] ?? 'N/A') . "</p>";
-                    echo "<p><strong>Status:</strong> " . htmlspecialchars($row['status'] ?? 'N/A') . "</p>";
                     echo "<form action='adoption_form.php' method='GET'>
                             <input type='hidden' name='animal_id' value='" . htmlspecialchars($row['id']) . "'>
                             <button type='submit'>Adopt</button>

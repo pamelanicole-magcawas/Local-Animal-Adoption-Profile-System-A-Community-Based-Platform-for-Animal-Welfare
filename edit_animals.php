@@ -14,12 +14,6 @@ if ($_SESSION['username'] !== 'admin1') {
     exit();
 }
 
-// Ensure that the admin is redirected to the correct dashboard
-if ($_SESSION['username'] !== 'admin1') {
-    header("Location: login.php"); // Redirect back if not admin1
-    exit();
-}
-
 if (isset($_POST['id'])) {
     $id = htmlspecialchars($_POST['id']);
     $name = htmlspecialchars($_POST['name']);
