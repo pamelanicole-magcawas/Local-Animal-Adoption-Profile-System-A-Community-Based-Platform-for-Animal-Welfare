@@ -88,6 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="password">Password</label>
             </div>
             <input type="submit" class="btn" value="Sign Up" name="signUp">
+            <div class="links">
+                <a href="login.php" id="signUpLink">Login</a>
+            </div>
             <?php if (isset($error)) echo "<p>$error</p>"; ?>
         </form>
     </div>
